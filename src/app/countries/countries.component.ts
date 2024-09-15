@@ -86,6 +86,7 @@ export class CountriesComponent implements OnInit {
 
   onSearch(): void {
     this.isSearching = true;
+    this.currentPage = 1; // Reset to the first page when a search is performed
     setTimeout(() => {
       this.paginateCountries(); // Recalculate pagination based on search term
       this.isSearching = false;

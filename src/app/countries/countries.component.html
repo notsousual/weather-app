@@ -21,6 +21,24 @@
       Sort by Name {{ sortAscending ? "(Ascending)" : "(Descending)" }}
     </button>
   </div>
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="!isSearching">
+    <button
+      class="pagination__button"
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+    >
+      Previous
+    </button>
+    <span>Page {{ currentPage }}</span>
+    <button
+      class="pagination__button"
+      (click)="nextPage()"
+      [disabled]="currentPage * itemsPerPage >= filteredCountries().length"
+    >
+      Next
+    </button>
+  </div>
 
   <!-- Loading indicator for search -->
   <div *ngIf="isSearching" class="loading-spinner">
@@ -29,7 +47,7 @@
   </div>
 
   <!-- Grid view -->
-  <mat-grid-list *ngIf="isGridView && !isSearching" cols="2" rowHeight="3:1">
+  <mat-grid-list *ngIf="isGridView && !isSearching" cols="2" rowHeight="100px">
     <mat-grid-tile *ngFor="let country of paginatedCountries">
       <button
         class="mat-grid-tile__button"
@@ -51,24 +69,5 @@
         View Weather
       </button>
     </div>
-  </div>
-
-  <!-- Pagination -->
-  <div class="pagination" *ngIf="!isSearching">
-    <button
-      class="pagination__button"
-      (click)="prevPage()"
-      [disabled]="currentPage === 1"
-    >
-      Previous
-    </button>
-    <span>Page {{ currentPage }}</span>
-    <button
-      class="pagination__button"
-      (click)="nextPage()"
-      [disabled]="currentPage * itemsPerPage >= filteredCountries().length"
-    >
-      Next
-    </button>
   </div>
 </div>
