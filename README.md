@@ -1,4 +1,15 @@
 # WeatherApp
+How it looks like:
+
+https://github.com/user-attachments/assets/be2456ab-eca1-44ee-bcd2-e722be1768c2
+
+
+<img width="1001" alt="Screenshot 2024-09-15 at 14 29 04" src="https://github.com/user-attachments/assets/a3e57842-443b-4bc5-8407-fe3eafeb3a77">
+
+<img width="1006" alt="Screenshot 2024-09-15 at 14 29 27" src="https://github.com/user-attachments/assets/62729cfc-5226-42c0-8bba-a791c162b677">
+
+<img width="385" alt="Screenshot 2024-09-15 at 14 28 57" src="https://github.com/user-attachments/assets/31433420-6682-44ab-b56e-0d74f3732bf9">
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4.
 
