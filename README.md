@@ -1,7 +1,8 @@
 # WeatherApp
 How it looks like:
 
-https://github.com/user-attachments/assets/be2456ab-eca1-44ee-bcd2-e722be1768c2
+
+https://github.com/user-attachments/assets/5bbd2c72-7c43-4390-b6c8-58aa270a25be
 
 
 <img width="1001" alt="Screenshot 2024-09-15 at 14 29 04" src="https://github.com/user-attachments/assets/a3e57842-443b-4bc5-8407-fe3eafeb3a77">
