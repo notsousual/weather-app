@@ -1,0 +1,181 @@
+$background-color: #232323;
+$text-color: #ffffff;
+$primary-color: #3498db;
+$secondary-color: #2980b9;
+$tile-background: rgba(255, 255, 255, 0.9);
+$tile-background-hover: rgb(255, 255, 255);
+$button-hover-bg: #f1f1f1;
+$spinner-color: #009dff;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $background-color;
+  min-height: 100vh;
+  font-family: "Arial", sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
+  color: $text-color;
+}
+
+.search-bar {
+  width: 80vw;
+  max-width: 80vw;
+  margin-bottom: 20px;
+
+  &__input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+%button-shared {
+  background-color: transparent;
+  border: 1px solid $text-color;
+  color: $text-color;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  @include transition(background-color);
+
+  &:hover {
+    background-color: $text-color;
+    color: $background-color;
+  }
+}
+
+.toggle-button,
+.toggle-sort,
+.pagination__button {
+  @extend %button-shared;
+}
+
+.mat-grid-list {
+  min-width: 80vw;
+}
+
+.mat-grid-tile {
+  background-color: $tile-background;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  @include flex-center;
+  @include transition;
+
+  &:hover {
+    background-color: $tile-background-hover;
+    transform: translateY(-5px);
+  }
+
+  &__button {
+    @include button-reset;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $button-hover-bg;
+    }
+  }
+}
+
+.list-view {
+  width: 100%;
+  max-width: 80vw;
+  color: #232323;
+}
+
+.list-item {
+  background-color: $tile-background-hover;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include transition(transform);
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &__button {
+    background-color: $primary-color;
+    color: $text-color;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.loading-spinner {
+  @include flex-center;
+  flex-direction: column;
+
+  &__spinner {
+    border: 8px solid transparent;
+    border-top: 8px solid $spinner-color;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,25 @@
+<div *ngIf="weatherData?.main; else loading" class="weather-card">
+  <h1 class="weather-card__title">
+    Weather in <b>{{ country }}</b>
+  </h1>
+
+  <h2 class="weather-card__temperature">{{ weatherData.main.temp }}°</h2>
+
+  <div class="weather-card__details">
+    <p>Wind: {{ weatherData.wind.speed }} m/s</p>
+    <p>
+      Precipitation:
+      {{ weatherData.rain?.['1h'] ? weatherData.rain['1h'] + ' mm' : 'No Data' }}
+    </p>
+  </div>
+
+  <div class="weather-card__unit-switch">
+    <button class="btn" (click)="switchUnits()">
+      Switch to {{ units === "metric" ? "Imperial" : "Metric" }} Units
+    </button>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p class="loading">Loading weather data...</p>
+</ng-template>

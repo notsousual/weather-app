@@ -1,0 +1,74 @@
+<div *ngIf="isLoading" class="loading-spinner">
+  <div class="loading-spinner__spinner"></div>
+  <p>Loading countries...</p>
+</div>
+
+<div *ngIf="!isLoading">
+  <div class="search-bar">
+    <input
+      class="search-bar__input"
+      [(ngModel)]="searchTerm"
+      placeholder="Search country"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <div class="controls">
+    <button class="toggle-button" (click)="toggleView()">
+      Switch to {{ isGridView ? "List" : "Grid" }} View
+    </button>
+    <button class="toggle-sort" (click)="toggleSort()">
+      Sort by Name {{ sortAscending ? "(Ascending)" : "(Descending)" }}
+    </button>
+  </div>
+
+  <!-- Loading indicator for search -->
+  <div *ngIf="isSearching" class="loading-spinner">
+    <div class="loading-spinner__spinner"></div>
+    <p>Searching countries...</p>
+  </div>
+
+  <!-- Grid view -->
+  <mat-grid-list *ngIf="isGridView && !isSearching" cols="2" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let country of paginatedCountries">
+      <button
+        class="mat-grid-tile__button"
+        (click)="selectCountry(country.country)"
+      >
+        {{ country.country }}
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- List view -->
+  <div *ngIf="!isGridView && !isSearching" class="list-view">
+    <div *ngFor="let country of paginatedCountries" class="list-item">
+      <div>{{ country.country }}</div>
+      <button
+        class="list-item__button"
+        (click)="selectCountry(country.country)"
+      >
+        View Weather
+      </button>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="!isSearching">
+    <button
+      class="pagination__button"
+      (click)="prevPage()"
+      [disabled]="currentPage === 1"
+    >
+      Previous
+    </button>
+    <span>Page {{ currentPage }}</span>
+    <button
+      class="pagination__button"
+      (click)="nextPage()"
+      [disabled]="currentPage * itemsPerPage >= filteredCountries().length"
+    >
+      Next
+    </button>
+  </div>
+</div>

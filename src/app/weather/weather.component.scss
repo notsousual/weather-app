@@ -1,0 +1,118 @@
+$background-dark: #2b2b2b;
+$card-bg: #ffffff;
+$card-text: #000000;
+$accent-color: #64b5f6;
+$temperature-color: #ffa162;
+$button-bg: #2d2d2d;
+$button-text: #ffffff;
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    $background-dark,
+    darken($background-dark, 10%)
+  );
+  font-family: "Arial", sans-serif;
+  color: $card-text;
+}
+
+.weather-card {
+  background-color: $card-bg;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgb(0, 0, 0);
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+
+  &__title {
+    font-size: 1.75rem;
+    color: $card-text;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  &__temperature {
+    font-size: 4rem;
+    color: $temperature-color;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+
+    p {
+      font-size: 1.25rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+  }
+
+  &__unit-switch {
+    margin-top: 1.5rem;
+  }
+}
+
+.btn {
+  background-color: $button-bg;
+  color: $button-text;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: all 0.5s ease;
+  }
+
+  &:hover {
+    background-color: lighten($button-bg, 5%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.loading {
+  font-size: 1.25rem;
+  color: $card-bg;
+  opacity: 0.8;
+}
